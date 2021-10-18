@@ -1,33 +1,37 @@
 package model;
 
-public class PartTimeEmployee extends Employee{
-    private double hours;
+public class PartTimeEmployee extends Employee {
+    private double workTime;
 
-    public PartTimeEmployee() {
+    public PartTimeEmployee(double workTime) {
+        this.workTime = workTime;
     }
 
-    public PartTimeEmployee(String name, int age, String code, String phone, String email, double hours) {
-        super(name, age, code, phone, email);
-        this.hours = hours;
+    public PartTimeEmployee(int id, String name, int age, String gender, String phone, String email, String address, double salary, boolean status, double workTime) {
+        super(id, name, age, gender, phone, email, address, salary, status);
+        this.workTime = workTime;
     }
 
-    public PartTimeEmployee(double hours) {
-        this.hours = hours;
+//    public PartTimeEmployee(int id, String name, int age, String gender, String phone, String email, String address, double salary, double totalSalary, boolean status, double workTime) {
+//        super(id, name, age, gender, phone, email, address, salary, totalSalary, status);
+//        this.workTime = workTime;
+//    }
+
+    public double getWorkTime() {
+        return workTime;
     }
 
-    public double getHours() {
-        return hours;
+    public void setWorkTime(double workTime) {
+        this.workTime = workTime;
     }
 
-    public void setHours(double hours) {
-        this.hours = hours;
+    @Override
+    public double getTotalSalary() {
+        return this.getSalary() * getWorkTime();
     }
 
     @Override
     public String toString() {
-        return
-                "PartTimeEmployee{"+
-                "hours=" + hours +
-                '}';
+        return "Nhân viên PartTime: " + super.toString() + ", giờ làm việc: " + workTime + "h, danh thu: " + getTotalSalary() + "";
     }
 }
