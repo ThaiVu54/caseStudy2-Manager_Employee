@@ -1,9 +1,11 @@
 package controller;
 
-public interface IEmployee {
+import model.Employee;
+
+public interface IEmployee<E> {
     void showAll();
 
-    void addEmployee();
+    void addEmployee(Employee employee);
 
     void updateEmployee();
 
