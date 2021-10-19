@@ -1,13 +1,15 @@
 package controller;
 
 import model.Employee;
+import model.NameRegex;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeManager {
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scannerInt = new Scanner(System.in);
+    static Scanner scannerLine = new Scanner(System.in);
     private String nameFile;
     static List<Employee> employees = new ArrayList<>();
 
@@ -40,35 +42,65 @@ public class EmployeeManager {
     }
 
     private static String getPhone() {
-        return null;
+        while (true){
+            try{
+                System.out.println("Nhập số điện thoại（づ￣3￣）づ╭❤️～:");
+                String phone = scannerLine.nextLine();
+            }catch (Exception e){
+                System.err.println("Nhập sai rồi (～￣▽￣)～!");
+            }
+        }
     }
 
     private static String getGender() {
-        return null;
+        while (true) {
+            try {
+                System.out.println("Nhập giới tính （づ￣3￣）づ╭❤️～:");
+                String gender = scannerLine.nextLine();
+                return gender;
+            } catch (Exception e) {
+                System.err.println("Nhập không đúng (～￣▽￣)～!");
+            }
+        }
     }
 
     private static int getAge() {
-        return 0;
+        while (true) {
+            try {
+                System.out.println("Nhập tuổi （づ￣3￣）づ╭❤️～: ");
+                int age = scannerInt.nextInt();
+                return age;
+            } catch (Exception e) {
+                System.err.println("Nhập không đúng (～￣▽￣)～!");
+            }
+        }
     }
 
     private static String getName() {
-        return null;
+        String name;
+        while (true) {
+            System.out.println("Nhập tên （づ￣3￣）づ╭❤️～: ");
+            name = scannerLine.nextLine();
+            if (NameRegex.validate(name)) {
+                return name;
+            }
+        }
     }
 
     private static int getId() {
         while (true) {
             try {
-                System.out.println("Nhập id: ");
-                int id = Integer.parseInt(String.valueOf(scanner.nextInt()));
+                System.out.println("Nhập id （づ￣3￣）づ╭❤️～: ");
+                int id = scannerInt.nextInt();
                 for (Employee employee : employees
                 ) {
-                    if (employee.getId() == id){
+                    if (employee.getId() == id) {
                         throw new Exception();
                     }
                 }
                 return id;
             } catch (Exception e) {
-                System.err.println("Id đã tồn tại");
+                System.err.println("Id đã tồn tại (～￣▽￣)～!");
             }
         }
     }
