@@ -5,9 +5,9 @@ import controller.ManagerEmployee;
 import java.util.Scanner;
 
 public class Menu {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
-    public void menuEmployee() {
+    public static void menuEmployee() {
         ManagerEmployee managerEmployee = new ManagerEmployee();
         while (true) {
             try {

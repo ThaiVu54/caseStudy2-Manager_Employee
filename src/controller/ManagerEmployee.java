@@ -338,6 +338,9 @@ public class ManagerEmployee implements IEmployee<Employee> {
             System.out.println("Nhân viên " + employees.get(check).getName() + ": " + employees.get(check).getStatus());
         }
     }
+    public void showUser(){
+        System.out.println(ManagerLogin.getTemp());
+    }
 }
 
 //    @Override

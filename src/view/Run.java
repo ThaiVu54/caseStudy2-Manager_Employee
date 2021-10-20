@@ -1,9 +1,9 @@
 package view;
 
-import controller.ManagerEmployee;
+import controller.ManagerLogin;
 
 public class Run {
     public static void main(String[] args) {
-        new Menu().menuEmployee();
+        ManagerLogin.menu();
     }
 }
