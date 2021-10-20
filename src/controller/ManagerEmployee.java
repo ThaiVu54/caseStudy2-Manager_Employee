@@ -13,6 +13,7 @@ public class ManagerEmployee implements IEmployee<Employee> {
     public static void main(String[] args) {
         ManagerEmployee managerEmployee = new ManagerEmployee();
         managerEmployee.addEmployee("parttime");
+        managerEmployee.findEmployee();
     }
     private List<Employee> employees = new ArrayList<>();
     private String fileName;
@@ -211,9 +212,25 @@ public class ManagerEmployee implements IEmployee<Employee> {
 
     @Override
     public void findEmployee() {
-
+        for (Employee employee :
+        employees) {
+            findByName();
+        }
     }
-
+    public void findByName() {
+        System.out.println("Nhập tên tìm kiếm: ");
+        String name = scannerLine.nextLine();
+        int check = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getName().contains(name)) {
+                check = i;
+                System.out.println(employees.get(i));
+            }
+        }
+        if (check<0){
+            System.out.println("Không có tên trong danh sách");
+        }
+    }
 //    @Override
 //    public void findEmployee() {
 //        System.out.println("Nhập id nhân viên tìm kiếm: ");
