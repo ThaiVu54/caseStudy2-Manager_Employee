@@ -13,8 +13,9 @@ public class ManagerEmployee implements IEmployee<Employee> {
     public static void main(String[] args) {
         ManagerEmployee managerEmployee = new ManagerEmployee();
         managerEmployee.addEmployee("parttime");
-        managerEmployee.findEmployee();
-        managerEmployee.displayByStatus();
+//        managerEmployee.findEmployee();
+//        managerEmployee.displayByStatus();
+        managerEmployee.checkStatus();
     }
 
     private List<Employee> employees = new ArrayList<>();
@@ -246,14 +247,29 @@ public class ManagerEmployee implements IEmployee<Employee> {
                     System.out.println(employee);
                 }
             }
-        }
-        else {
+        } else {
             for (Employee employee :
                     employees) {
-                if(employee.isStatus() == false){
+                if (employee.isStatus() == false) {
                     System.out.println(employee);
                 }
             }
+        }
+    }
+
+    public void checkStatus() {
+        System.out.println("Nhập tên nhân viên cần kiểm tra trạng thái: ");
+        String name = scannerLine.nextLine();
+        int check = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getName().equals(name)) {
+                check = i;
+            }
+        }
+        if (check < 0) {
+            System.out.println("Tên này ko có trong danh sách nhân viên");
+        } else {
+            System.out.println("Nhân viên " + employees.get(check).getName() + ": " + employees.get(check).getStatus());
         }
     }
 }

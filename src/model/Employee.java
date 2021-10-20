@@ -123,9 +123,9 @@ public class Employee {
     public String getStatus() {
         String status = null;
         if (this.status == true) {
-            status = "Nhân viên đang làm việc";
+            status = "đang làm việc";
         } else {
-            status = "Nhân viên đã nghỉ việc";
+            status = "đã nghỉ việc";
         }
         return status;
     }
