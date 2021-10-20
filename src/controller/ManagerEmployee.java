@@ -19,9 +19,25 @@ public class ManagerEmployee implements IEmployee<Employee> {
         this.employees = employees;
     }
 
-//    public Employee create(Employee employee){
-//
-//    }
+    public Employee create(Employee typeEmployee){
+        int id = getID();
+        String name = getName();
+        int age = getAge();
+        String gender = getGender();
+        String phone = getPhone();
+        String email = getEmail;
+        String address = getAdress();
+        double salary = getSalary();
+        double totalSalary = getTotalSalary();
+        boolean status = getStatus();
+        double workTime = getWorkTime();
+
+        if (typeEmployee == "fulltime"){
+            return new FullTimeEmployee(id, name, age, gender, phone, email, address, salary, status);
+        }else {
+            return new PartTimeEmployee(id, name, age, gender, phone, email, address, salary, status, workTime);
+        }
+    }
 
     public List<Employee> getEmployees() {
         return employees;
