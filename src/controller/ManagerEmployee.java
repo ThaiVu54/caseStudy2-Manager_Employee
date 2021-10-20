@@ -14,7 +14,9 @@ public class ManagerEmployee implements IEmployee<Employee> {
         ManagerEmployee managerEmployee = new ManagerEmployee();
         managerEmployee.addEmployee("parttime");
         managerEmployee.findEmployee();
+        managerEmployee.displayByStatus();
     }
+
     private List<Employee> employees = new ArrayList<>();
     private String fileName;
     Employee fullEmployee = new FullTimeEmployee();
@@ -157,18 +159,18 @@ public class ManagerEmployee implements IEmployee<Employee> {
         }
     }
 
-    public void showByTypeEmployee(){
+    public void showByTypeEmployee() {
         String choose = scannerLine.nextLine();
-        if (choose == "fulltime"){
-            for (Employee employee: employees
-                 ) {
-                if (employee instanceof FullTimeEmployee){
+        if (choose == "fulltime") {
+            for (Employee employee : employees
+            ) {
+                if (employee instanceof FullTimeEmployee) {
                     System.out.println(employee);
                 }
             }
-        }else {
-            for (Employee employee: employees){
-                if (employee instanceof PartTimeEmployee){
+        } else {
+            for (Employee employee : employees) {
+                if (employee instanceof PartTimeEmployee) {
                     System.out.println(employee);
                 }
             }
@@ -183,8 +185,8 @@ public class ManagerEmployee implements IEmployee<Employee> {
 
     @Override
     public void addEmployee(String typeEmploye) {
-       Employee employee = create(typeEmploye);
-       employees.add(employee);
+        Employee employee = create(typeEmploye);
+        employees.add(employee);
     }
 
     @Override
@@ -198,13 +200,13 @@ public class ManagerEmployee implements IEmployee<Employee> {
         int id = scannerInt.nextInt();
         int check = -1;
         for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getId() == id){
+            if (employees.get(i).getId() == id) {
                 check = i;
             }
         }
-        if (check<0){
+        if (check < 0) {
             System.out.println("id không tồn tại");
-        }else {
+        } else {
             employees.remove(check);
             System.out.println("Đã xóa nhân viên");
         }
@@ -213,10 +215,11 @@ public class ManagerEmployee implements IEmployee<Employee> {
     @Override
     public void findEmployee() {
         for (Employee employee :
-        employees) {
+                employees) {
             findByName();
         }
     }
+
     public void findByName() {
         System.out.println("Nhập tên tìm kiếm: ");
         String name = scannerLine.nextLine();
@@ -227,10 +230,34 @@ public class ManagerEmployee implements IEmployee<Employee> {
                 System.out.println(employees.get(i));
             }
         }
-        if (check<0){
+        if (check < 0) {
             System.out.println("Không có tên trong danh sách");
         }
     }
+
+    public void displayByStatus() {
+        System.out.println("1. Hiển thị nhân viên đang làm");
+        System.out.println("2. Hiển thị nhân viên nghỉ làm");
+        int choose = scannerInt.nextInt();
+        if (choose == 1) {
+            for (Employee employee :
+                    employees) {
+                if (employee.isStatus() == true) {
+                    System.out.println(employee);
+                }
+            }
+        }
+        else {
+            for (Employee employee :
+                    employees) {
+                if(employee.isStatus() == false){
+                    System.out.println(employee);
+                }
+            }
+        }
+    }
+}
+
 //    @Override
 //    public void findEmployee() {
 //        System.out.println("Nhập id nhân viên tìm kiếm: ");
@@ -239,4 +266,4 @@ public class ManagerEmployee implements IEmployee<Employee> {
 //        if (check)
 //    }
 
-}
+//        }
