@@ -5,7 +5,9 @@ import model.Employee;
 public interface IEmployee<E> {
     void showAll();
 
-    void addEmployee(Employee employee);
+//    void addEmployee();
+
+    void addEmployee(String typeEmploye);
 
     void updateEmployee();
 

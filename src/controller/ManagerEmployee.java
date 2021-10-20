@@ -10,6 +10,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ManagerEmployee implements IEmployee<Employee> {
+    public static void main(String[] args) {
+        ManagerEmployee managerEmployee = new ManagerEmployee();
+        managerEmployee.addEmployee("parttime");
+    }
     private List<Employee> employees = new ArrayList<>();
     private String fileName;
     Employee fullEmployee = new FullTimeEmployee();
@@ -60,26 +64,27 @@ public class ManagerEmployee implements IEmployee<Employee> {
         }
     }
 
-    private double getWorkTime() {
-        return 0;
-    }
+//    private double getWorkTime() {
+//
+//        return 0;
+//    }
 
     private boolean isStatus() {
         System.out.println("Nhập trạng thái nhân viên (true-đang làm việc/false-đã nghỉ việc): ");
         boolean status = false;
         String status1 = scannerLine.nextLine();
-        if (status1.equals("true")){
+        if (status1.equals("true")) {
             status = true;
-        }else if (status1.equals("false")){
+        } else if (status1.equals("false")) {
             status = false;
-        }else System.out.println("nhập sai");
+        } else System.out.println("nhập sai");
         return status;
     }
 
     private double getTotalSalary() {
         double total = 0;
-        for (Employee employee: employees
-             ) {
+        for (Employee employee : employees
+        ) {
             total += getSalary();
         }
         return total;
@@ -128,7 +133,8 @@ public class ManagerEmployee implements IEmployee<Employee> {
     }
 
     private int getID() {
-        System.out.println("Nhập id: ");;
+        System.out.println("Nhập id: ");
+        ;
         int id = scannerInt.nextInt();
         return id;
     }
@@ -150,10 +156,34 @@ public class ManagerEmployee implements IEmployee<Employee> {
         }
     }
 
+    public void showByTypeEmployee(){
+        String choose = scannerLine.nextLine();
+        if (choose == "fulltime"){
+            for (Employee employee: employees
+                 ) {
+                if (employee instanceof FullTimeEmployee){
+                    System.out.println(employee);
+                }
+            }
+        }else {
+            for (Employee employee: employees){
+                if (employee instanceof PartTimeEmployee){
+                    System.out.println(employee);
+                }
+            }
+        }
+    }
+
+//    @Override
+//    public void addEmployee() {
+//
+//    }
+
 
     @Override
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
+    public void addEmployee(String typeEmploye) {
+       Employee employee = create(typeEmploye);
+       employees.add(employee);
     }
 
     @Override
@@ -163,12 +193,33 @@ public class ManagerEmployee implements IEmployee<Employee> {
 
     @Override
     public void removeEmployee() {
-
+        System.out.println("Nhập nhân viên cần xóa (theo id): ");
+        int id = scannerInt.nextInt();
+        int check = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getId() == id){
+                check = i;
+            }
+        }
+        if (check<0){
+            System.out.println("id không tồn tại");
+        }else {
+            employees.remove(check);
+            System.out.println("Đã xóa nhân viên");
+        }
     }
 
     @Override
     public void findEmployee() {
 
     }
+
+//    @Override
+//    public void findEmployee() {
+//        System.out.println("Nhập id nhân viên tìm kiếm: ");
+//        int id = scannerInt.nextInt();
+//        int check = -1;
+//        if (check)
+//    }
 
 }
