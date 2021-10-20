@@ -16,7 +16,7 @@ public class ManagerLogin {
         return temp;
     }
 
-    public static void menu() {
+    public static void menu() throws IOException, ClassNotFoundException {
         while (true) {
             try {
                 System.out.println("--------Welcome--------");
@@ -26,15 +26,11 @@ public class ManagerLogin {
                 System.out.println("_______________________");
                 int choose = Integer.parseInt(scanner.nextLine());
                 switch (choose) {
-                    case 1:
-                        login();
-                        break;
-                    case 2:
-                        signUp();
-                        break;
+                    case 1 -> login();
+                    case 2 -> signUp();
                 }
-            } catch (Exception e) {
-                System.out.println("Nhập 1 hoặc 2");
+            } catch (Exception ex) {
+                System.out.println("nhấn 1 hoặc 2");
             }
         }
     }
@@ -42,16 +38,17 @@ public class ManagerLogin {
 
     private static void login() throws IOException, ClassNotFoundException {
         while (true) {
-            System.out.println("--------------------");
+            System.out.println("----------------------");
             System.out.println("Nhập tên đăng nhập: ");
             String userName = scanner.nextLine();
-            System.out.println("Nhập mật khẩu: ");
+            System.out.println("Nhập mật khẩu : ");
             String password = scanner.nextLine();
-            System.out.println("--------------------");
+            System.out.println("___________________________________________________________________");
             ReadWriteLogin.readFileLogin();
             for (User user : ReadWriteLogin.users) {
-                if (user.getUserName().equals(userName) && user.getPassWord().equals(password)) {
-                    System.out.println("--------------welcome" + userName + "--------------------");
+                if (user.getUserName().equalsIgnoreCase(userName) && user.getPassWord().equals(password)) {
+                    System.out.println("------------------------------Welcom " + userName + " -------------------------- ");
+                    temp = user;
                     temp = user;
                     Menu.menuEmployee();
                     return;
@@ -69,14 +66,14 @@ public class ManagerLogin {
             System.out.println("nhập mật khẩu : ");
             String password = scanner.nextLine();
             ReadWriteLogin.readFileLogin();
-            for (User user: ReadWriteLogin.users){
-                if (user.getUserName().equals(userName)){
+            for (User user : ReadWriteLogin.users) {
+                if (user.getUserName().equals(userName)) {
                     System.err.println("Tên đã tồn tại");
                     return;
                 }
             }
             System.out.println("Đăng nhập vào hệ thống");
-            ReadWriteLogin.users.add(new User(userName,password));
+            ReadWriteLogin.users.add(new User(userName, password));
             ReadWriteLogin.writeFileLogin();
             break;
         }
