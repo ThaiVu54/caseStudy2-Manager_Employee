@@ -6,6 +6,7 @@ import model.PartTimeEmployee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ManagerEmployee implements IEmployee<Employee> {
@@ -28,7 +29,7 @@ public class ManagerEmployee implements IEmployee<Employee> {
         this.employees = employees;
     }
 
-    public Employee create(Employee typeEmployee) {
+    public Employee create(String typeEmployee) {
         int id = getID();
         String name = getName();
         int age = getAge();
@@ -39,17 +40,24 @@ public class ManagerEmployee implements IEmployee<Employee> {
         double salary = getSalary();
         double totalSalary = getTotalSalary();
         boolean status = isStatus();
-        double workTime = getWorkTime();
+//        double workTime = getWorkTime();
 
-        if (typeEmployee.equals("fulltime")) {
+//        if (typeEmployee.equals("fulltime")) {
+//            return new FullTimeEmployee(id, name, age, gender, phone, email, address, salary, status);
+//        }
+//        if (typeEmployee.equals("parttime")) {
+//            System.out.println("Nhập số giờ làm việc: ");
+//            workTime = scannerInt.nextInt();
+//            return new PartTimeEmployee(id, name, age, gender, phone, email, address, salary, status, workTime);
+//        }
+//        return typeEmployee;
+        if (Objects.equals(typeEmployee, "NhanVienFullTime")) {
             return new FullTimeEmployee(id, name, age, gender, phone, email, address, salary, status);
-        }
-        if (typeEmployee.equals("parttime")) {
+        } else {
             System.out.println("Nhập số giờ làm việc: ");
-            workTime = scannerInt.nextInt();
+            double workTime = scannerInt.nextInt();
             return new PartTimeEmployee(id, name, age, gender, phone, email, address, salary, status, workTime);
         }
-        return typeEmployee;
     }
 
     private double getWorkTime() {
