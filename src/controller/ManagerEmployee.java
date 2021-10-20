@@ -65,43 +65,72 @@ public class ManagerEmployee implements IEmployee<Employee> {
     }
 
     private boolean isStatus() {
-        return false;
+        System.out.println("Nhập trạng thái nhân viên (true-đang làm việc/false-đã nghỉ việc): ");
+        boolean status = false;
+        String status1 = scannerLine.nextLine();
+        if (status1.equals("true")){
+            status = true;
+        }else if (status1.equals("false")){
+            status = false;
+        }else System.out.println("nhập sai");
+        return status;
     }
 
     private double getTotalSalary() {
-        return 0;
+        double total = 0;
+        for (Employee employee: employees
+             ) {
+            total += getSalary();
+        }
+        return total;
     }
 
     private double getSalary() {
-        return 0;
+        System.out.println("Nhập lương nhân viên: ");
+        double salary = scannerInt.nextDouble();
+        return salary;
     }
 
     private String getAdress() {
-        return null;
+        System.out.println("Nhập địa chỉ nhân viên: ");
+        String address = scannerLine.nextLine();
+        return address;
     }
 
     private String getEmail() {
-        return null;
+        System.out.println("Nhập email nhân viên: ");
+        String email = scannerLine.nextLine();
+        return email;
     }
 
     private String getPhone() {
-        return null;
+        System.out.println("Nhập số điện thoại nhân viên: ");
+        String phone = scannerLine.nextLine();
+        return phone;
     }
 
     private String getGender() {
-        return null;
+        System.out.println("Nhập giới tính nhân viên (nam/nu): ");
+        String gender = scannerLine.nextLine();
+        return gender;
     }
 
     private int getAge() {
-        return 0;
+        System.out.println("Nhập tuổi nhân viên: ");
+        int age = scannerInt.nextInt();
+        return age;
     }
 
     private String getName() {
-        return null;
+        System.out.println("Nhập tên nhân viên: ");
+        String name = scannerLine.nextLine();
+        return name;
     }
 
     private int getID() {
-        return 0;
+        System.out.println("Nhập id: ");;
+        int id = scannerInt.nextInt();
+        return id;
     }
 
     public List<Employee> getEmployees() {
