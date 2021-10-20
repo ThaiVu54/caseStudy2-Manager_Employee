@@ -1,6 +1,6 @@
 package model;
 
-public class Employee {
+public abstract class Employee {
     private int id;
     private String name;
     private int age;

@@ -3,6 +3,9 @@ package model;
 public class PartTimeEmployee extends Employee {
     private double workTime;
 
+    public PartTimeEmployee(){
+
+    }
     public PartTimeEmployee(double workTime) {
         this.workTime = workTime;
     }

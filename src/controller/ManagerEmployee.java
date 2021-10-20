@@ -9,6 +9,8 @@ import java.util.List;
 
 public class ManagerEmployee implements IEmployee<Employee> {
     private List<Employee> employees = new ArrayList<>();
+    Employee fullEmployee = new FullTimeEmployee();
+    Employee partEmployee = new PartTimeEmployee();
 
     public ManagerEmployee() {
     }
@@ -17,6 +19,9 @@ public class ManagerEmployee implements IEmployee<Employee> {
         this.employees = employees;
     }
 
+//    public Employee create(Employee employee){
+//
+//    }
 
     public List<Employee> getEmployees() {
         return employees;
