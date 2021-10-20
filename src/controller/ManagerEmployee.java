@@ -10,13 +10,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ManagerEmployee implements IEmployee<Employee> {
-    public static void main(String[] args) {
-        ManagerEmployee managerEmployee = new ManagerEmployee();
-        managerEmployee.addEmployee("parttime");
-//        managerEmployee.findEmployee();
-//        managerEmployee.displayByStatus();
-        managerEmployee.checkStatus();
-    }
 
     private List<Employee> employees = new ArrayList<>();
     private String fileName;
@@ -44,7 +37,7 @@ public class ManagerEmployee implements IEmployee<Employee> {
         String gender = getGender();
         String phone = getPhone();
         String email = getEmail();
-        String address = getAdress();
+        String address = getAddress();
         double salary = getSalary();
         double totalSalary = getTotalSalary();
         boolean status = isStatus();
@@ -59,7 +52,7 @@ public class ManagerEmployee implements IEmployee<Employee> {
 //            return new PartTimeEmployee(id, name, age, gender, phone, email, address, salary, status, workTime);
 //        }
 //        return typeEmployee;
-        if (Objects.equals(typeEmployee, "NhanVienFullTime")) {
+        if (Objects.equals(typeEmployee, "fulltime")) {
             return new FullTimeEmployee(id, name, age, gender, phone, email, address, salary, status);
         } else {
             System.out.println("Nhập số giờ làm việc: ");
@@ -100,7 +93,7 @@ public class ManagerEmployee implements IEmployee<Employee> {
         return salary;
     }
 
-    private String getAdress() {
+    private String getAddress() {
         System.out.println("Nhập địa chỉ nhân viên: ");
         String address = scannerLine.nextLine();
         return address;
@@ -192,8 +185,81 @@ public class ManagerEmployee implements IEmployee<Employee> {
 
     @Override
     public void updateEmployee() {
-
+        while(true){
+                System.out.println("1.Chỉnh sửa trạng thái");
+                System.out.println("2.Chỉnh sửa thông tin Nhân viên");
+                int choice = scannerInt.nextInt();
+                switch (choice){
+                    case 1:
+                        editStatusByName();
+                        break;
+                    case 2:
+                        editByName();
+                        break;
+                }
+        }
     }
+
+    public void editStatusByName() {
+        System.out.println("Nhập tên nhân viên cập nhật trạng thái: ");
+        String name = scannerLine.nextLine();
+        int check = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getName().equals(name)) {
+                check = i;
+            }
+        }
+        if (check < 0) {
+            System.out.println("Tên không có trong danh sách");
+        } else {
+            if (employees.get(check).isStatus() == true) {
+                employees.get(check).setStatus(false);
+                System.out.println(employees.get(check));
+            } else {
+                employees.get(check).setStatus(true);
+                System.out.println(employees.get(check));
+            }
+        }
+    }
+
+    public void editByName() {
+        System.out.println("Nhập tên nhân viên cần cập nhật: ");
+        String nameE = scannerLine.nextLine();
+        int check = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getName().equals(nameE)) {
+                check = i;
+            }
+        }
+        if (check < 0){
+            System.out.println("Tên không có trong danh sách!");
+        }else {
+            int id = getID();
+            String name = getName();
+            int age = getAge();
+            String gender = getGender();
+            String phone = getPhone();
+            String email = getEmail();
+            String address = getAddress();
+            double salary = getSalary();
+            boolean status = isStatus();
+            employees.get(check).setId(id);
+            employees.get(check).setName(name);
+            employees.get(check).setAge(age);
+            employees.get(check).setGender(gender);
+            employees.get(check).setPhone(phone);
+            employees.get(check).setEmail(email);
+            employees.get(check).setAddress(address);
+            employees.get(check).setSalary(salary);
+            employees.get(check).setStatus(status);
+            if (employees.get(check) instanceof PartTimeEmployee){
+                System.out.println("Nhập số giờ làm việc: ");
+                double workTime = scannerInt.nextDouble();
+                ((PartTimeEmployee) employees.get(check)).setWorkTime(workTime);
+            }
+        }
+    }
+
 
     @Override
     public void removeEmployee() {
