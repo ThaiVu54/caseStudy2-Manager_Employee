@@ -6,11 +6,20 @@ import model.PartTimeEmployee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ManagerEmployee implements IEmployee<Employee> {
     private List<Employee> employees = new ArrayList<>();
+    private String fileName;
     Employee fullEmployee = new FullTimeEmployee();
     Employee partEmployee = new PartTimeEmployee();
+    Scanner scannerInt = new Scanner(System.in);
+    Scanner scannerLine = new Scanner(System.in);
+
+
+    public ManagerEmployee(String fileName) {
+        this.fileName = fileName;
+    }
 
     public ManagerEmployee() {
     }
@@ -19,24 +28,72 @@ public class ManagerEmployee implements IEmployee<Employee> {
         this.employees = employees;
     }
 
-    public Employee create(Employee typeEmployee){
+    public Employee create(Employee typeEmployee) {
         int id = getID();
         String name = getName();
         int age = getAge();
         String gender = getGender();
         String phone = getPhone();
-        String email = getEmail;
+        String email = getEmail();
         String address = getAdress();
         double salary = getSalary();
         double totalSalary = getTotalSalary();
-        boolean status = getStatus();
+        boolean status = isStatus();
         double workTime = getWorkTime();
 
-        if (typeEmployee == "fulltime"){
+        if (typeEmployee.equals("fulltime")) {
             return new FullTimeEmployee(id, name, age, gender, phone, email, address, salary, status);
-        }else {
+        }
+        if (typeEmployee.equals("parttime")) {
+            System.out.println("Nhập số giờ làm việc: ");
+            workTime = scannerInt.nextInt();
             return new PartTimeEmployee(id, name, age, gender, phone, email, address, salary, status, workTime);
         }
+        return typeEmployee;
+    }
+
+    private double getWorkTime() {
+        return 0;
+    }
+
+    private boolean isStatus() {
+        return false;
+    }
+
+    private double getTotalSalary() {
+        return 0;
+    }
+
+    private double getSalary() {
+        return 0;
+    }
+
+    private String getAdress() {
+        return null;
+    }
+
+    private String getEmail() {
+        return null;
+    }
+
+    private String getPhone() {
+        return null;
+    }
+
+    private String getGender() {
+        return null;
+    }
+
+    private int getAge() {
+        return 0;
+    }
+
+    private String getName() {
+        return null;
+    }
+
+    private int getID() {
+        return 0;
     }
 
     public List<Employee> getEmployees() {
