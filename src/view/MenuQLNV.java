@@ -1,4 +1,8 @@
 package view;
+
+import controller.ManagerNV;
+import controller.QuanLyLogin;
+
 import java.io.IOException;
 import java.util.Scanner;
 
