@@ -5,10 +5,11 @@ import controller.ManagerEmployee;
 import java.util.Scanner;
 
 public class Menu {
+    private static final String PATH_LOGIN ="file.txt";
     static Scanner scanner = new Scanner(System.in);
 
     public static void menuEmployee() {
-        ManagerEmployee managerEmployee = new ManagerEmployee();
+        ManagerEmployee managerEmployee = new ManagerEmployee(PATH_LOGIN);
         while (true) {
             try {
                 System.out.println("___________________________________________________________________");
