@@ -18,7 +18,7 @@ public class Menu {
                 System.out.println("3.Tìm kiếm nhân viên                | 11.Thoát                    |");
                 System.out.println("4.Kiểm tra trạng thái nhân viên                                   |");
                 System.out.println("5.Xóa nhân viên                                                   |");
-                System.out.println("6. Hiển thị nhân viên theo loại                                   |");
+                System.out.println("6.Hiển thị nhân viên theo loại                                   |");
                 System.out.println("7.Hiển thị nhân viên theo trạng thái                              |");
                 System.out.println("8.Hiện thị thông tin nhân viên                                    |");
                 System.out.println("__________________________________________________________________|");

@@ -2,40 +2,38 @@ package controller;
 
 import model.User;
 import storage.ReadWriteLogin;
-import view.Menu;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerLogin {
+    UserManager userManager = new UserManager();
     static User temp;
     static Scanner scanner = new Scanner(System.in);
 
-
+ReadWriteLogin readWriteLogin = new ReadWriteLogin();
     public static User getTemp() {
         return temp;
     }
-    public static void login() throws IOException, ClassNotFoundException {
-        while (true) {
-            System.out.println("----------------------");
-            System.out.println("Nhập tên đăng nhập: ");
-            String userName = scanner.nextLine();
-            System.out.println("Nhập mật khẩu : ");
-            String password = scanner.nextLine();
-            System.out.println("___________________________________________________________________");
-            ArrayList<User> users = ReadWriteLogin.readFileLogin();
-            for (User lg : users) {
-                if (lg.getUserName().equalsIgnoreCase(userName) && lg.getPassWord().equals(password)) {
-                    System.out.println("------------------------------Welcom " + userName + " -------------------------- ");
-                    temp = lg;
-                    Menu.menuEmployee();
-                    return;
-                }
-            }
-            System.err.println("sai mật khẩu / tên đăng nhập");
-        }
-    }
+//    public void login() throws IOException, ClassNotFoundException {
+//        while (true) {
+////            System.out.println("----------------------");
+////            System.out.println("Nhập tên đăng nhập: ");
+////            String userName = scanner.nextLine();
+////            System.out.println("Nhập mật khẩu : ");
+////            String password = scanner.nextLine();
+////            System.out.println("___________________________________________________________________");
+//            ArrayList<User> users = readWriteLogin.readFileLogin();
+//            for (User lg : users) {
+//                if (lg.getUserName().equalsIgnoreCase(userName) && lg.getPassWord().equals(password)) {
+//                    System.out.println("------------------------------Welcom " + userName + " -------------------------- ");
+//                    temp = lg;
+//                    Menu.menuEmployee();
+//                    return;
+//                }
+//            }
+//            System.err.println("sai mật khẩu / tên đăng nhập");
+//        }
+//    }
 //    public static void login() throws IOException, ClassNotFoundException {
 //        while (true) {
 //            System.out.println("----------------------");
@@ -58,29 +56,31 @@ public class ManagerLogin {
 //        }
 //    }
 
-    public static void signUp() throws IOException, ClassNotFoundException {
-        while (true) {
-            System.out.println("-------------------");
-            System.out.println("Nhập tên đăng ký : ");
-            String userName = scanner.nextLine();
-            System.out.println("Nhập mật khẩu : ");
-            String password = scanner.nextLine();
-            ReadWriteLogin.readFileLogin();
-            ArrayList<User> users1 = new ArrayList<>();
-            for (User lg : users1) {
-                if (lg.getUserName().equals(userName)) {
-                    System.err.println("Tên này đã tồn tại!!!");
-                    return;
-                }
-            }
-
-            System.out.println("đăng nhập để vào hệ thống");
-            ReadWriteLogin.users.add(new User(userName, password));
-            ReadWriteLogin.writeFileLogin();
-            break;
-        }
-        login();
-    }
+//    public void signUp() throws IOException, ClassNotFoundException {
+//        while (true) {
+//            System.out.println("-------------------");
+//            System.out.println("Nhập tên đăng ký : ");
+//            String userName = scanner.nextLine();
+//            System.out.println("Nhập mật khẩu : ");
+//            String password = scanner.nextLine();
+//            readWriteLogin.readFileLogin();
+//            ArrayList<User> users1 = new ArrayList<>();
+//            for (User lg : users1) {
+//                if (lg.getUserName().equals(userName)) {
+//                    System.err.println("Tên này đã tồn tại!!!");
+//                    MenuLogin.menu();
+//                    return;
+//                }
+//            }
+//
+//            System.out.println("đăng nhập để vào hệ thống");
+//            readWriteLogin.users.add(new User(userName, password));
+//            readWriteLogin.writeFileLogin();
+//            System.out.println("ok");
+//            break;
+//        }
+//        login();
+//    }
 //    public static void signUp() throws IOException, ClassNotFoundException {
 //        while (true) {
 //            System.out.println("-------------------");

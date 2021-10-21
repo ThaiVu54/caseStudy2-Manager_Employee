@@ -3,14 +3,18 @@ package controller;
 import model.Employee;
 import model.FullTimeEmployee;
 import model.PartTimeEmployee;
+import storage.ReadWriteEmployee;
+import storage.ReadWriteLogin;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class ManagerEmployee implements IEmployee<Employee> {
-
+    ReadWriteEmployee readWriteEmployee = new ReadWriteEmployee();
+    ReadWriteLogin readWriteLogin = new ReadWriteLogin();
     private List<Employee> employees = new ArrayList<>();
     private String fileName;
     Employee fullEmployee = new FullTimeEmployee();
@@ -154,17 +158,18 @@ public class ManagerEmployee implements IEmployee<Employee> {
     }
 
     public void showByTypeEmployee() {
-        String choose = scannerLine.nextLine();
-        if (choose == "fulltime") {
-            for (Employee employee : employees
-            ) {
+        System.out.println("1. Danh sách nhân viên fullTime");
+        System.out.println("2. Danh sách nhân viên partTime");
+        int choose = scannerInt.nextInt();
+        if (choose == 1) {
+            for (Employee employee : employees) {
                 if (employee instanceof FullTimeEmployee) {
                     System.out.println(employee);
                 }
             }
         } else {
             for (Employee employee : employees) {
-                if (employee instanceof PartTimeEmployee) {
+                if (employee instanceof FullTimeEmployee) {
                     System.out.println(employee);
                 }
             }
@@ -178,9 +183,10 @@ public class ManagerEmployee implements IEmployee<Employee> {
 
 
     @Override
-    public void addEmployee(String typeEmploye) {
+    public void addEmployee(String typeEmploye) throws IOException {
         Employee employee = create(typeEmploye);
         employees.add(employee);
+        readWriteEmployee.writeFileEmployee();
     }
 
     @Override
