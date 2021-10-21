@@ -1,7 +1,5 @@
 package storage;
 
-import model.Employee;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public class ReadWriteEmployee {
         oos.close();
     }
 
-    public static ArrayList<Employee> readFileEmployee() throws IOException, ClassNotFoundException {
+    public ArrayList<Employee> readFileEmployee() throws IOException, ClassNotFoundException {
         File file = new File(PATH_EMPLOYEE);
         if (!file.exists()) {
             file.createNewFile();

@@ -1,7 +1,5 @@
 package controller;
 
-import model.Employee;
-
 import java.io.IOException;
 
 public interface IEmployee<E> {
