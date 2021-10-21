@@ -1,13 +1,13 @@
 package controller;
 
-import storage.ReadWriteLogin;
+import model.User;
+import view.MenuQLNV;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class QuanLyLogin {
     static Scanner scanner = new Scanner(System.in);
-    //    static ArrayList<User> list = new ArrayList<>();
     static User temp;
 
     public static User getTemp() {

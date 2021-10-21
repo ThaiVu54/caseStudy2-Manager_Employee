@@ -124,7 +124,7 @@ public class ManagerNV {
     }
 
     public void editStatusByName() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee()
+        readWriteEmployee.readFileEmployee();
         System.out.println("Nhập tên nhân viên cần cập nhật trạng thái: ");
         String name = scanner.nextLine();
         int check = -1;
