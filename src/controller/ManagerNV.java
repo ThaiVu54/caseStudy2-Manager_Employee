@@ -3,14 +3,12 @@ package controller;
 import model.NhanVien;
 import model.NhanVienFullTime;
 import model.NhanVienPartTime;
-import storage.ReadWriteEmployee;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerNV {
-    ReadWriteEmployee readWriteEmployee = new ReadWriteEmployee();
     static Scanner scanner = new Scanner(System.in);
     private String nameFile;
     static ArrayList<NhanVien> nhanViens = new ArrayList<>();
@@ -40,16 +38,16 @@ public class ManagerNV {
     }
 
     public void addNV(String loaiNV) throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         NhanVien nhanVien = create(loaiNV);
         nhanViens.add(nhanVien);
         System.out.println("Thêm nhân viên thành công!!!");
-        readWriteEmployee.writeFileEmployee();
+        save();
     }
 
     public void removeNV() {
         try {
-            readWriteEmployee.readFileEmployee();
+            read();
             System.out.println("Nhập id nhân viên cần xóa : ");
             int id = Integer.parseInt(scanner.nextLine());
             int check = -1;
@@ -64,14 +62,14 @@ public class ManagerNV {
                 nhanViens.remove(check);
                 System.out.println("Xóa thành công!");
             }
-            readWriteEmployee.writeFileEmployee();
+            save();
         } catch (Exception e) {
             System.out.println("id phải là số!!!");
         }
     }
 
     public void findByName() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         System.out.println("Nhập tên nhân viên cần tìm : ");
         String name = scanner.nextLine();
         int check = -1;
@@ -87,7 +85,7 @@ public class ManagerNV {
     }
 
     public void showByStatus() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         System.out.println("1.Danh sách nhân viên đang làm việc");
         System.out.println("2.Danh sách nhân viên đã nghỉ việc");
         int choose = Integer.parseInt(scanner.nextLine());
@@ -107,7 +105,7 @@ public class ManagerNV {
     }
 
     public void checkStatus() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         System.out.println("Nhập tên nhân viên cần kiểm tra trạng thái: ");
         String name = scanner.nextLine();
         int check = -1;
@@ -124,7 +122,7 @@ public class ManagerNV {
     }
 
     public void editStatusByName() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         System.out.println("Nhập tên nhân viên cần cập nhật trạng thái: ");
         String name = scanner.nextLine();
         int check = -1;
@@ -144,11 +142,11 @@ public class ManagerNV {
                 System.out.println(nhanViens.get(check));
             }
         }
-        readWriteEmployee.writeFileEmployee();
+        save();
     }
 
     public void showByTypeNV() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         System.out.println("1. Danh sách nhân viên fullTime");
         System.out.println("2. Danh sách nhân viên partTime");
         int choose = Integer.parseInt(scanner.nextLine());
@@ -169,7 +167,7 @@ public class ManagerNV {
     }
 
     public void editByName() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         System.out.println("Nhập tên nhân viên cần cập nhật: ");
         String nameEd = scanner.nextLine();
         int check = -1;
@@ -205,27 +203,27 @@ public class ManagerNV {
                 ((NhanVienPartTime) nhanViens.get(check)).setHourWork(hourWork);
             }
         }
-        readWriteEmployee.writeFileEmployee();
+        save();
     }
 
-//    public void save() throws IOException {
-//
-//        FileOutputStream fos = new FileOutputStream(nameFile);
-//        ObjectOutputStream oos = new ObjectOutputStream(fos);
-//        oos.writeObject(nhanViens);
-//
-//    }
+    public void save() throws IOException {
 
-//    public void read()  {
-//        FileInputStream fis = null;
-//        try {
-//            fis = new FileInputStream(nameFile);
-//            ObjectInputStream ois = new ObjectInputStream(fis);
-//            nhanViens = (ArrayList<NhanVien>) ois.readObject();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+        FileOutputStream fos = new FileOutputStream(nameFile);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(nhanViens);
+
+    }
+
+    public void read()  {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(nameFile);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            nhanViens = (ArrayList<NhanVien>) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private static int getID() {
         while (true) {
@@ -331,16 +329,16 @@ public class ManagerNV {
     private static String getAddress() {
         while (true) {
             try{
-                System.out.println("Nhập địa chỉ : ");
-                String address =  scanner.nextLine();
-                if(address.equals("")){
-                    throw new Exception();
-                }
-                return address;
-            }catch (Exception ex){
+            System.out.println("Nhập địa chỉ : ");
+           String address =  scanner.nextLine();
+           if(address.equals("")){
+               throw new Exception();
+           }
+           return address;
+        }catch (Exception ex){
                 System.err.println("không đc để trống địa chỉ");
             }
-        }}
+    }}
 
     private static float getSalary() {
         while (true) {
@@ -375,7 +373,7 @@ public class ManagerNV {
     }
 
     public void showNV() throws IOException, ClassNotFoundException {
-        readWriteEmployee.readFileEmployee();
+        read();
         for (NhanVien nv : nhanViens) {
             System.out.println(nv);
             System.out.println();

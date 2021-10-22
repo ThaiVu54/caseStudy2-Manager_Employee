@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MenuQLNV {
     static Scanner scanner = new Scanner(System.in);
-    public static   void menuNV() throws IOException, ClassNotFoundException {
+    public static void menuNV() throws IOException, ClassNotFoundException {
         ManagerNV nv = new ManagerNV("src/file.txt");
 
         while (true) {
@@ -20,7 +20,7 @@ public class MenuQLNV {
                 System.out.println("4.Tìm kiếm nhân viên                                              |");
                 System.out.println("5.Kiểm tra trạng thái nhân viên                                   |");
                 System.out.println("6.Xóa nhân viên                                                   |");
-                System.out.println("7.Hiển thị nhân viên theo loại                                   |");
+                System.out.println("7.Hiển thị nhân viên theo loại                                    |");
                 System.out.println("8.Hiển thị nhân viên theo trạng thái                              |");
                 System.out.println("9.Hiện thị thông tin nhân viên                                    |");
                 System.out.println("__________________________________________________________________|");

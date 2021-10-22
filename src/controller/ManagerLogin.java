@@ -1,10 +1,13 @@
 package controller;
 
+import model.User;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class ManagerLogin {
     static ArrayList<User> users = new ArrayList<>();
+//    public static final String PATH_LOGIN = "login.txt";
 
 
     public static  void writeFileLogin() throws IOException {
