@@ -308,10 +308,7 @@ public class ManagerNV {
                         System.err.println("Email này đã tồn tại!! Mời nhâp lại");
                     }
                 }
-//                if(email.contains(" ")&&!email.contains("@")){check=1;}
-//                if(check>0){
-//                    throw new Exception();
-//                }
+
                 if (!email.contains("@") || email.contains(" ") || email.equals("")) {
                     check = 1;
                     System.err.println("email phải có ít nhất 1 ký tự và có @ ");

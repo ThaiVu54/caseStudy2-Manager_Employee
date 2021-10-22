@@ -1,7 +1,6 @@
 package view;
 
 import controller.ManagerNV;
-import controller.QuanLyLogin;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -14,16 +13,17 @@ public class MenuQLNV {
         while (true) {
             try {
                 System.out.println("___________________________________________________________________");
-                System.out.println("1.Thêm nhân viên                    | 10.Trở Lại đăng nhập        |");
-                System.out.println("2.Cập nhật nhân viên                | 11.Show tài khoản người dùng|");
-                System.out.println("3.Chỉnh sửa trạng thái nhân viên    | 12.Thoát                    |");
-                System.out.println("4.Tìm kiếm nhân viên                                              |");
-                System.out.println("5.Kiểm tra trạng thái nhân viên                                   |");
-                System.out.println("6.Xóa nhân viên                                                   |");
-                System.out.println("7.Hiển thị nhân viên theo loại                                    |");
-                System.out.println("8.Hiển thị nhân viên theo trạng thái                              |");
-                System.out.println("9.Hiện thị thông tin nhân viên                                    |");
-                System.out.println("__________________________________________________________________|");
+                System.out.println("1. Thêm nhân viên                                                  |");
+                System.out.println("2. Cập nhật nhân viên                                              |");
+                System.out.println("3. Chỉnh sửa trạng thái nhân viên                                  |");
+                System.out.println("4. Tìm kiếm nhân viên                                              |");
+                System.out.println("5. Kiểm tra trạng thái nhân viên                                   |");
+                System.out.println("6. Xóa nhân viên                                                   |");
+                System.out.println("7. Hiển thị nhân viên theo loại                                    |");
+                System.out.println("8. Hiển thị nhân viên theo trạng thái                              |");
+                System.out.println("9. Hiện thị thông tin toàn bộ nhân viên                                    |");
+                System.out.println("10.Thoát                                                           |");
+                System.out.println("___________________________________________________________________|");
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
@@ -61,13 +61,13 @@ public class MenuQLNV {
                     case 9:
                         nv.showNV();
                         break;
+//                    case 10:
+//                        QuanLyLogin.menu();
+//                        break;
+//                    case 11:
+//                        nv.showUser();
+//                        break;
                     case 10:
-                        QuanLyLogin.menu();
-                        break;
-                    case 11:
-                        nv.showUser();
-                        break;
-                    case 12:
                         System.exit(0);
                         break;
                     default:
