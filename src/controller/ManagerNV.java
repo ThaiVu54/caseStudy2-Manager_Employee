@@ -237,7 +237,7 @@ public class ManagerNV {
                 }
                 return id;
             } catch (Exception e) {
-                System.err.println("id đã tồn tại!!!");
+                System.err.println("id không đúng!!!");
             }
         }
     }
