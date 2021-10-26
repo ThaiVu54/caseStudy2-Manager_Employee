@@ -21,7 +21,7 @@ public class MenuQLNV {
                 System.out.println("6. Xóa nhân viên                                                   |");
                 System.out.println("7. Hiển thị nhân viên theo loại                                    |");
                 System.out.println("8. Hiển thị nhân viên theo trạng thái                              |");
-                System.out.println("9. Hiện thị thông tin toàn bộ nhân viên                                    |");
+                System.out.println("9. Hiện thị thông tin toàn bộ nhân viên                            |");
                 System.out.println("10.Thoát                                                           |");
                 System.out.println("___________________________________________________________________|");
                 int choice = Integer.parseInt(scanner.nextLine());
